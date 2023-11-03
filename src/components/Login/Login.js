@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://inventory-app-backend-one.vercel.app/api/user/login", {
+      const response = await fetch("http://localhost:5000/api/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,7 @@ const Login = () => {
           localStorage.setItem("token", responseData.token);
           SweetAlertService.success("Great Job", "You are in Redirecting");
           setIsLoggedIn(true);
-          history.push("/admin/dashboard");
+          history.push("/home");
           console.log("Login successful", isLoggedIn);
         } else {
           SweetAlertService.error(
