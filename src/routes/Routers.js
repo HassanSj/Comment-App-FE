@@ -5,28 +5,31 @@ import {
 } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import AuthRoute from "./AuthRoute";
-import FeedbackPage from "../components/Feedback/FeedbackPage";
 import Login from "../components/Login/Login";
-import Home from "../components/Home/Home";
 import Logout from "../components/Logout/Logout";
 import Signup from "../components/Signup/Signup";
+import Product from "../components/Product/Product";
+import Review from "../components/Review/Review";
 const Routers = () => {
   const authPaths = [
-    { path: "/home", component: Home },
-    { path: "/feedback", component: FeedbackPage },
+    { path: "/products", component: Product },
+    { path: "/review/:id", component: Review },
   ];
 
   return (
     <>
       <BrowserRouter>
         <Switch>
-          {authPaths.map((route, index) => (
-            <AuthRoute key={index} path={route} component={route.component} />
+          {authPaths?.map((route, index) => (
+            <AuthRoute
+              key={index}
+              path={route.path}
+              component={route.component}
+            />
           ))}
           <Route path="/signup" component={Signup} />
-          <Route path="/home" component={Home} />
+          <Route path="/logout" component={Logout} />
           <Route path="/" component={Login} />
-          <Route path="/feedback" component={FeedbackPage} />
         </Switch>
       </BrowserRouter>
     </>
